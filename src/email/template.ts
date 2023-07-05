@@ -1,15 +1,22 @@
-const dots = require("dot");
+import * as dots from "dot";
 
 export const template = dots.template(`
+<div>
     {{~ it.array :k}}
-        <h3>{{=k.title}}</h3>
-        <a style="
-            background-color: cornflowerblue; 
-            color: white; 
-            padding: 7px 10px;
-            border: 2px solid pink; 
-            border-radius: 10px"
-        href={{=k.href}}>read</a>
+        <ul>
+            <li>
+                <a 
+                    style="
+                        display: block;
+                        color: white; 
+                        padding: 7px 10px;
+                        margin: 10px;
+                        "
+                        href={{=k.href}}>{{=k.title}}
+                </a>
+            </li>
+        </ul>
     {{~}}
+    </div>
 `);
 

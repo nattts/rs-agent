@@ -3,12 +3,9 @@ import { IData } from './types/declaration';
 
 export default module.exports = async (url: string|undefined, numberOfTitles: number): Promise<IData[]|null> => {
     try {
-        const browser = await puppeteer.launch({ 
-            headless: 'new',
-            args: ['--no-sandbox']
-        });
+        const browser = await puppeteer.launch();
         const page = await browser.newPage();
-        await page.goto(url, { waitUntil: 'networkidle0' });
+        url && await page.goto(url, { waitUntil: 'networkidle0' });
 
         const itemsSelector = "ul > li > h3 > a";
         const result = await page.evaluate((selector: any, numberOfTitles: any): IData[] => {

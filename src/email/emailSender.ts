@@ -8,7 +8,7 @@ export const send = async (document: IData[]|null): Promise<any|void> => {
             const templateDoc = template({array: document});
             const options = mailOptions(templateDoc);
             transporter.sendMail(options)
-            console.log('Email sent')
+            console.log(`Email sent: ${new Date()}`)
         }
     } catch (e: any) {
        return Promise.reject(`unable to send email ${e}`);
